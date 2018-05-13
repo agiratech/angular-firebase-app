@@ -1,0 +1,15 @@
+<input type="text" placeholder="message" #newitem />
+<button (click)="addItem(newitem.value)">Add</button>
+<button (click)="deleteEverything()">Delete All</button>
+<br><br>
+<table class="table">
+  <tbody>
+    <tr *ngFor="let item of items | async">
+      <td><input type="text" #updatetext [value]="item.text" /></td>
+      <td>{{item.created}}</td>
+      <td>{{item.modified}}</td>
+      <td><button (click)="updateItem(item.key, updatetext.value)">Update</button>
+  		<button (click)="deleteItem(item.key)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
